@@ -9,7 +9,7 @@ window.addEventListener("DOMContentLoaded", () => {
 async function greet() {
 	fetch('https://gcs.icu/songs/tauri.php').then(response => response.arrayBuffer()).then((chunk) => {
 		console.log(chunk);
-		greetMsgEl.textContent = window.__TAURI__.core.invoke("greet", chunk, {
+		greetMsgEl.textContent = window.__TAURI__.core.invoke("greet", new Uint8Array(chunk), {
 				headers: {
 					path: 'test.mp3'
 				}
